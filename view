@@ -4,5 +4,7 @@ import numpy as np
 
 mypos=(x,y)
 radius = np.sqrt(mypos.x*mypos.x+mypos.y*mypos.y)
+theta =((x,y)*(0,0))/radius*mypos.x 
 
 viewside1 = radius*(cos(theta)+(theta-(pi/3)*(sin(theta)))
+viewside2 = radius*(cos(theta)+(theta+(pi/3)*(sin(theta)))
