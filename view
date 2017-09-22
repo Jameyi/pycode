@@ -1,0 +1,8 @@
+
+
+import numpy as np
+
+mypos=(x,y)
+radius = np.sqrt(mypos.x*mypos.x+mypos.y*mypos.y)
+
+viewside1 = radius*(cos(theta)+(theta-(pi/3)*(sin(theta)))
