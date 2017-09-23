@@ -1,27 +1,35 @@
 
 
 import numpy as np
+import math
 
 def class PYPoint
 	def __init__():
 		self.x = 0
 		self.y = 0
 		self.r = 1
+		self.theta = 0*math.pi
 	def getxyr():
-		return self.x,self.y,self.r
+		return self.x,self.y,self.r,self.theta
 	def assignxyr(x,y,r=1)
 		self.x = x
 		self.y = y
 		self.r = r
-
+	def getview():
+		myx,myy,myr,theta = self.getxyr()
+		self.viewside1 = r*(math.cos(theta)+(theta-(math.pi/3)*math.sin(theta)))
+		self.viewside2 = r*(math.cos(theta)+(theta+(math.pi/3)*math.sin(theta)))
+		return self.viewside1,self.viewside2
+	def rotateview(deltatheta):
+		self.theta = self.theta + deltatheta
 
 if __name__ == "__main__":
 	myview = PYPoint()
-	myx,myy,myr = myview.getxyr()
-	
-	theta = (
 
-#radius = np.sqrt(myx**2 + myy**2) 	
+	
+
+#radius = np.sqrt(myx**2 + myy**2) 
+#（a+Rcosθ, b+Rsinθ）
 theta =((x,y)*(0,0))/radius*mypos.x 
 
 viewside1 = radius*(cos(theta)+(theta-(pi/3)*(sin(theta)))
