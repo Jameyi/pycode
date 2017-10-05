@@ -1,3 +1,5 @@
+import sys,getopt
+
 # 输入一个二进制数，返回十六进制数、
 def bin2hex(bin):
 	return hex(int(bin,2))
@@ -14,12 +16,28 @@ def bin2dec(bin):
 # 二进制数的逻辑与，或，取反，异或，右移位，左移位计算符 & | ~ ^ >> <<
 # 子网划分：现有两个 C 类网，202.203.204.0 和 202.203.224.0，分别把它们平均分成 4 个（子网号2位）和 8 个（子网号3位）子网，写出每个子网的起始、终结 IP 和子网掩码。
 
-cnet_1 = "202.203.204.0"
-cnet_2 = "202.203.224.0"
+
 # subnet_1 = 4 = pow(2) 
 # subnet_2 = 8 = pow(3)
 def calcIP(cnetip,mask):
+	cnet = str(cnetip).strip(".")
+	hostip = int(cnet[3])
+	hostbit = dec2bin(hostip)
+	mask = int(mask)
+	mask_count = len(dec2bin(mask))
 
 if __name__ == __"main"__:
 # IP 地址就可看作 IP = 网络号 + 子网号 + 主机号
 # IP地址分成四份，每份转化为二进制地址，与子网掩码进行逻辑与运算
+opts, args = getopt.getopt(sys.argv[1:], "hi:m:")
+cnetip = ""
+mask = ""
+for op,value in opts:
+	if op == "-i":
+		cnetip = value
+	elif op == "-m":
+		mask = value
+	elif op == "-h"
+		usage()
+		sys.exit()
+calcIP(cnetip,mask)
