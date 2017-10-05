@@ -20,11 +20,20 @@ def bin2dec(bin):
 # subnet_1 = 4 = pow(2) 
 # subnet_2 = 8 = pow(3)
 def calcIP(cnetip,mask):
+	# 把IP地址按小数点号分成四份
 	cnet = str(cnetip).strip(".")
+	# 主机号是第四组ip
 	hostip = int(cnet[3])
+	# 转为二进制以便于之后的计算
 	hostbit = dec2bin(hostip)
+	# 子网掩码转为10进制数
 	mask = int(mask)
-	mask_count = len(dec2bin(mask))
+	# 获取子网个数，转为二进制位数
+	mask_count = len(dec2bin(mask)) # 2
+	maskcode = ''.join('0' for x in range(8))  #'00000000'
+	masklist = list([int(x) for x in maskcode]) #(0,0,0,0,0,0,0,0)
+	for i in range(mask_count):
+		masklist[i] = 1        #(1,1,0,0,0,0,0,0)  list(map(int, numbers))
 
 if __name__ == __"main"__:
 # IP 地址就可看作 IP = 网络号 + 子网号 + 主机号
