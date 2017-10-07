@@ -2,6 +2,16 @@
 # 子网划分：现有两个 C 类网，202.203.204.0 和 202.203.224.0，分别把它们平均分成 4 个（子网号2位）和 8 个（子网号3位）子网，写出每个子网的起始、终结 IP 和子网掩码。
 import sys,getopt
 
+"""
+Usage:
+  network.py -i <ip> -m <mask>...
+
+Options:
+  -h --help     Show this screen.
+  -i      	Input IP address
+  -m		Input mask
+"""
+
 # 输入一个二进制数，返回十六进制数、
 def bin2hex(bin):
 	return hex(int(bin,2))
@@ -42,6 +52,7 @@ def calcIP(cnetip,mask):
 	return maskadd,hostadd
 
 if __name__ == __"main"__:
+arguments = docopt(__doc__, version='network 1.0')
 # IP 地址就可看作 IP = 网络号 + 子网号 + 主机号
 opts, args = getopt.getopt(sys.argv[1:], "hi:m:")
 cnetip = ""
@@ -52,6 +63,6 @@ for op,value in opts:
 	elif op == "-m":
 		mask = value
 	elif op == "-h"
-		usage()
+		print(arguments)
 		sys.exit()
 maskid,hostip = calcIP(cnetip,mask)
