@@ -35,9 +35,12 @@ def calcIP(cnetip,mask):
 	mask_str = '{0:0>8}'.format(mask_bin_str) #'11000000' ,'11100000'
 	mask_bin = dec2bin(mask_str) #11000000,11100000
 	# 计算子网掩码 和各个子网起始，终结IP
-	netip = hostbin & mask_bin
-	netip_str = str(netip)
-	
+	netip = hostbin & mask_bin # 计算
+	netip_str = str(netip)  # 转为字符串
+	maskadd = netip_str[0:maskcount-1]
+	hostadd = netip_str[maskcount:]
+	hostsegment = cnet[0]+"."+cnet[1]+"."+cnet[2]+"."+maskadd+hostadd
+	return maskadd,hostadd,hostsegment
 	 
 	
 
