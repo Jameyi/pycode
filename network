@@ -27,13 +27,12 @@ def calcIP(cnetip,mask):
 	# 转为二进制以便于之后的计算
 	hostbit = dec2bin(hostip)
 	# 子网掩码转为10进制数
-	mask = int(mask)
+	mask_dec = int(mask)
 	# 获取子网个数，转为二进制位数
-	mask_count = len(dec2bin(mask)) # 2
-	maskcode = ''.join('0' for x in range(8))  #'00000000'
-	masklist = list([int(x) for x in maskcode]) #(0,0,0,0,0,0,0,0)
-	for i in range(mask_count):
-		masklist[i] = 1        #(1,1,0,0,0,0,0,0)  list(map(int, numbers))
+	mask_bin = dec2bin(mask_dec-1) # 11,111
+	mask_bin_str = str(mask_bin)  #'11','111'
+	
+
 
 if __name__ == __"main"__:
 # IP 地址就可看作 IP = 网络号 + 子网号 + 主机号
