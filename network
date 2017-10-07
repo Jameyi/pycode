@@ -25,12 +25,20 @@ def calcIP(cnetip,mask):
 	# 主机号是第四组ip
 	hostip = int(cnet[3])
 	# 转为二进制以便于之后的计算
-	hostbit = dec2bin(hostip)
+	hostbin = dec2bin(hostip)
 	# 子网掩码转为10进制数
 	mask_dec = int(mask)
 	# 获取子网个数，转为二进制位数
 	mask_bin = dec2bin(mask_dec-1) # 11,111
 	mask_bin_str = str(mask_bin)  #'11','111'
+	mask_count = len(mask_bin_str) # 2,3
+	mask_str = '{0:0>8}'.format(mask_bin_str) #'11000000' ,'11100000'
+	mask_bin = dec2bin(mask_str) #11000000,11100000
+	# 计算子网掩码 和各个子网起始，终结IP
+	netip = hostbin & mask_bin
+	netip_str = str(netip)
+	
+	 
 	
 
 
