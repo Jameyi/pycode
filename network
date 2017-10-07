@@ -17,10 +17,6 @@ def bin2dec(bin):
 
 # 二进制数的逻辑与，或，取反，异或，右移位，左移位计算符 & | ~ ^ >> <<
 
-
-
-# subnet_1 = 4 = pow(2) 
-# subnet_2 = 8 = pow(3)
 def calcIP(cnetip,mask):
 # IP地址分成四份，每份转化为二进制地址，与子网掩码进行逻辑与运算
 	# 把IP地址按小数点号分成四份
@@ -33,7 +29,7 @@ def calcIP(cnetip,mask):
 	mask_dec = int(mask)
 	# 获取子网个数，转为二进制位数
 	mask_bin = dec2bin(mask_dec-1) # 11,111
-	mask_bin_str = str(mask_bin)  #'11','111'
+	mask_bin_str = str(mask_bin)   #'11','111'
 	mask_count = len(mask_bin_str) # 2,3
 	mask_str = '{0:0>8}'.format(mask_bin_str) #'11000000' ,'11100000'
 	mask_bin = dec2bin(mask_str) #11000000,11100000
@@ -42,15 +38,11 @@ def calcIP(cnetip,mask):
 	netip_str = str(netip)  # 转为字符串
 	maskadd = netip_str[0:maskcount-1]
 	hostadd = netip_str[maskcount:]
-	hostsegment = cnet[0]+"."+cnet[1]+"."+cnet[2]+"."+maskadd+hostadd
-	return maskadd,hostadd,hostsegment
-	 
-	
-
+	#hostsegment = cnet[0]+"."+cnet[1]+"."+cnet[2]+"."+maskadd+hostadd
+	return maskadd,hostadd
 
 if __name__ == __"main"__:
 # IP 地址就可看作 IP = 网络号 + 子网号 + 主机号
-
 opts, args = getopt.getopt(sys.argv[1:], "hi:m:")
 cnetip = ""
 mask = ""
@@ -62,4 +54,4 @@ for op,value in opts:
 	elif op == "-h"
 		usage()
 		sys.exit()
-maskid,hostip,seg = calcIP(cnetip,mask)
+maskid,hostip = calcIP(cnetip,mask)
