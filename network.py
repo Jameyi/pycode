@@ -69,11 +69,6 @@ def calcIP(cnetip,mask):
     hostseg = cnet[0]+'.'+cnet[1]+'.'+cnet[2]+'.'+str(int(ips,10))
     return maskip,hostips,hostseg
 
-    print(netip_str)
-    print(maskadd,hostadd)
-	#hostsegment = cnet[0]+"."+cnet[1]+"."+cnet[2]+"."+maskadd+hostadd
-    return maskadd,hostadd
-
 if __name__ == "__main__":
     arguments = docopt(__doc__,version='network 1.0')
 # IP 地址就可看作 IP = 网络号 + 子网号 + 主机号
