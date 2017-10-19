@@ -10,7 +10,7 @@ def obtain_parse_wiki_snp500():
 	now = datetime.datetime.utcnow()
 	# Use requests and BeautifulSoup to download the
 	# list of s&p500 companies and obtain the symbol table
-	response = requests.get("http://en.wikipedia.org/wiki/List_of_s%26p_500_companies")
+	response = requests.get("http://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
 	soup = bs4.BeautifulSoup(response.text)
 	# This selects the first table,using CSS Selector syntax
 	# and then ignores the header row([1:])
