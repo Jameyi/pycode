@@ -2,7 +2,7 @@
 #! coding:utf-8
 
 # 子网划分：现有两个 C 类网，202.203.204.0 和 202.203.224.0，分别把它们平均分成 4 个（子网号2位）和 8 个（子网号3位）子网，写出每个子网的起始、终结 IP 和子网掩码。
-# 下次任务：添加--1.输入纠错，2.IP地址段起始到终止显示
+
 """network 1.0
 Usage:
   network.py -i <ip> -m <mask>...
@@ -15,6 +15,7 @@ Options:
 
 import sys,getopt
 from docopt import docopt
+import string
 
 # 输入一个二进制数，返回十六进制数、
 def bin2hex(bin):
@@ -45,11 +46,27 @@ def bin2dec(bin):
     return int(bin,2)
 
 # 二进制数的逻辑与，或，取反，异或，右移位，左移位计算符 & | ~ ^ >> <<
+def isnotdigit(num_str):
+    if type(num_str) is not str:
+        return True
+    else:
+        for i in num_str:
+            if i not in string.digits:
+                return True
+        return False
+
 
 def calcIP(cnetip,mask):
 # IP地址分成四份，每份转化为二进制地址，与子网掩码进行逻辑与运算
 	# 把IP地址按小数点号分成四份
     cnet = str(cnetip).split(".")
+    for i in range(len(cnet)-1):
+        if isnotdigit(cnet[i]):
+            print("Please input integer of IPAddress and mask!")
+            break
+    if isnotdigit(mask):
+        print("Please input interger of IPAddress and mask!")
+        break
 	# 主机号是第四组ip
     hostip = int(cnet[3])
 	# 转为二进制以便于之后的计算
@@ -69,6 +86,7 @@ def calcIP(cnetip,mask):
     hostseg = cnet[0]+'.'+cnet[1]+'.'+cnet[2]+'.'+str(int(ips,10))
     return maskip,hostips,hostseg
 
+
 if __name__ == "__main__":
     arguments = docopt(__doc__,version='network 1.0')
 # IP 地址就可看作 IP = 网络号 + 子网号 + 主机号
@@ -83,6 +101,13 @@ if __name__ == "__main__":
         elif op == "-h":
 	    print(arguments)
 	    sys.exit()
+    #if isinstance(cnetip,int) and isinstance(mask,int):
+    #    maskip,hostip,hostseg = calcIP(cnetip,mask)
+    #    print('子网掩码='+str(maskip))
+    #    print('主机起始地址='+str(hostip))
+    #    print('IP地址起始='+str(hostseg))
+    #else:
+    #    print("Please input integer of IPaddress and mask")
     maskip,hostip,hostseg = calcIP(cnetip,mask)
     print('子网掩码='+str(maskip))
     print('主机起始地址='+str(hostip))
