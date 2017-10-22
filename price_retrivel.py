@@ -1,5 +1,9 @@
+#! /usr/bin/env python
+#! coding:utf-8
 
-
+import datetime
+import requests
+import MySQLdb
 
 def get_daily_historic_data_yahoo(tiker,start_date=(2000,1,1),end_date=datetime.date.today().timetuple()[0:3]):
 	

@@ -1,4 +1,10 @@
+#! /usr/bin/env python
+#! coding:utf-8
 
+from bs4 import BeautifulSoup as bs
+import MySQLdb
+import datetime
+import requests
 
 def obtain_parse_wiki_snp500():
 
@@ -37,8 +43,8 @@ def insert_snp500_symbols(symbols):
 	# Insert the S&P500 symbols into the MySQL database
 	# Connect to the MySQL instance
 	db_host = 'localhost'
-	db_user = 'sec_user'
-	db_pass = 'password'
+	db_user = 'root'
+	db_pass = 'jameyi'
 	db_name = 'securities_master'
 	con = mdb.connect(host=db_host,user=db_user,passwd=db_pass,db=db_name)
 	
