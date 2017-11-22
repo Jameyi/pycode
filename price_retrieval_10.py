@@ -4,7 +4,7 @@
 import pandas as pd
 import pandas_datareader.data as web
 import time
-import datetime
+from datetime import *
 import MYSQLdb as mdb
 import tushare as ts
 
@@ -22,7 +22,9 @@ def getdatafromts(startdate,enddate):
   
 if __name__ == "__main__":
   startdate = datetime.datetime(2017,11,1)
-  enddate = datetime.datetime.today())
+  enddate = date.today())
+  startdate_ts = date.isoformat(startdate)
+  enddate_ts = date.isoformat(date.today())
   getdatafromts(startdate,enddate)
   
 
