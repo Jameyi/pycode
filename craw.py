@@ -25,6 +25,7 @@ import urllib2
 import re
 
 urlstr = "http://fund.eastmoney.com/"
+
 fundcode = '161725'
 position_list = []
 uprise_list = []
@@ -54,8 +55,13 @@ if __name__ == "__main__":
 			uprise = div.get_text()
 			uprise_num = uprise.decode('unicode-escape').encode('utf-8').replace('%','0').replace('--','0')
 			uprise_list.append(float(uprise_num))
-		
- 
+	
+	#############################保存基金属性#################################
+	
+	html2 = urllib2.urlopen(htmlstr+"/f10/jbgk_"+fundcode+".html")
+	bsobj = bs(html2,'html.parser')
+	trs = bsobj.find("div",{"class":"bs_gl"}).findAll("span")
+	print(trs)
 
 
 
