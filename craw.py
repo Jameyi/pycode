@@ -25,12 +25,28 @@ import urllib2
 import re
 
 urlstr = "http://fund.eastmoney.com/"
-
+urlstrallfund = "http://fund.eastmoney.com/allfund.html"
 fundcode = '161725'
 position_list = []
 uprise_list = []
 
 if __name__ == "__main__":
+	
+	fundlinks = []
+	fundcodes = []
+	html = urllib2.urlopen(urlstrallfund)
+	# 如果网页内容太大的话，用lxml可能会有丢失，转用html.parser
+	bsobj = bs(html,"html.parser")
+	
+	for lnk in bsobj.findAll("a",href=re.compile("^(http://fund.eastmoney.com/)[0-9]*\.(html)")):
+		if 'href' in lnk.attrs:
+			if lnk.attrs['href'] not in fundlinks:
+				newfund = lnk.attrs['href']
+				fundlinks.append(newfund)
+				newfund = newfund.strip(' ').split('.')[2]
+				newfund = newfund.strip(' ').split('/')[1]
+				fundcodes.append(newfund)
+	
 	# 访问网页
 	html = urllib2.urlopen(urlstr+fundcode+'.html?spm=search')
 	# beautifulsoup 解析网页
@@ -62,6 +78,7 @@ if __name__ == "__main__":
 	bsobj = bs(html2,'html.parser')
 	trs = bsobj.find("div",{"class":"bs_gl"}).findAll("span")
 	print(trs)
+	
 
 
 
