@@ -24,3 +24,23 @@ unit_net_value decimal(6,4) NULL,
 stock_position_1_code varchar(6) NULL,
 PRIMARY KEY(id)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+mysql -u root -p jameyi
+
+CREATE DATABASE stock;
+USE stock
+
+CREATE TABLE stockinfo(
+id int NOT NULL AUTO_INCREMENT,
+stockcode varchar(6) NOT NULL,
+stockname varchar(255) NULL,
+ticker varchar(32) NULL,
+instrument varchar(32) NULL,
+sector varchar(128) NULL,
+currency NULL,
+created_date datetime NOT NULL,
+last_update_date datetime NOT NULL,
+PRIMARY KEY(id)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
