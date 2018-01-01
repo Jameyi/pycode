@@ -6,24 +6,6 @@ print(rstr,type(rstr))
 res = bin(int(rstr,10))
 print(res,type(res))
 
-mysql -u root -p jameyi
-
-CREATE DATABASE fund;
-USE fund
-
-CREATE TABLE fundinfo(
-id int NOT NULL AUTO_INCREMENT,
-fundcode varchar(6) NOT NULL,
-fundname varchar(255) NULL,
-fundtype varchar(6) NULL,
-listed_date datetime NULL,
-created_date datetime NOT NULL,
-last_update_date datetime NULL,
-accumulate_net_value decimal(6,4) NULL,
-unit_net_value decimal(6,4) NULL,
-stock_position_1_code varchar(6) NULL,
-PRIMARY KEY(id)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
 
@@ -44,3 +26,72 @@ created_date datetime NOT NULL,
 last_update_date datetime NOT NULL,
 PRIMARY KEY(id)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+###########################################################################
+fundinfo
+(
+row:eachfund;
+column:
+id int not null, found  (1)
+fundcode varchar(6) not null, found (000001)
+fundname varchar(255) null,  (基金久嘉）
+fundtype varchar(6) null, found （指数联接）
+listed_date datetime null, found （2009-07-10）
+created_date datetime not null,（now）
+last_update_date datetime null,（now）
+accumulate_net_value decimal(6,4) null, （3.17）
+unit_net_value decimal(6,4) null, （1.17）
+stock_position_1_code varchar(6) null, found  五粮液
+stock_position_percentage_1 decimal(5,4) null, 7%
+stock_position_2_code varchar(6) null, found
+stock_position_percentage_2 decimal(5,4) null,
+stock_position_3, found
+stock_position_percentage_3,
+stock_position_4, found
+stock_position_percentage_4,
+stock_position_5, found
+stock_position_percentage_5,
+stock_position_6, found
+stock_position_percentage_6,
+stock_position_7, found
+stock_position_percentage_7,
+stock_position_8, found
+stock_position_percentage_8,
+stock_position_9, found
+stock_position_percentage_9,
+stock_position_10, found
+stock_position_percentage_10,
+last_week_uplift decimal(5,4) null, found  1%
+last_month_uplift decimal(5,4) null, found 2%
+last_threemonth_uplift decimal(5,4) null, found 3%
+last_sixmonth_uplift decimal(5,4) null, found 4%
+this_year_uplift decimal(5,4) null, found 5%
+last_year_uplift decimal(5,4) null, found 6%
+last_twoyear_uplift decimal(5,4) null, found 7%
+last_threeyear_uplift decimal(5,4) null, found 8%
+period_profit_1
+period_profit_2
+period_profit_3
+period_profit_4
+period_return_1
+period_return_2
+period_return_3
+period_return_4
+period_unit_uplift_1
+period_unit_uplift_2
+period_unit_uplift_3
+period_unit_uplift_4
+final_return_for_distribution_1
+final_return_for_distribution_2
+final_return_for_distribution_3
+final_return_for_distribution_4
+final_returnfund_for_distribution_1
+final_returnfund_for_distribution_2
+final_returnfund_for_distribution_3
+final_returnfund_for_distribution_4
+final_accumulated_upliftpercentage_fund_1
+final_accumulated_upliftpercentage_fund_2
+final_accumulated_upliftpercentage_fund_3
+final_accumulated_upliftpercentage_fund_4
+
+61 rows
