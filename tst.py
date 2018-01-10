@@ -95,3 +95,22 @@ final_accumulated_upliftpercentage_fund_3
 final_accumulated_upliftpercentage_fund_4
 
 61 rows
+
+########################################################################################################################
+symbol table(row:eachstock; column:id,exchang_id,ticker,instrument,name,sector,currency,created_date,last_update_date)
+
+info_in_day table(row:eachstock;column:open,high,low,close,limit_up,limit_down,volume,total_turnover)
+
+stock_timestamp table(row:eachtimestamp,column:price,volume,turnover,buy1,sell1,buy2,sell2,buy3,sell3,buy4,sell4,buy5,sell5)
+
+stock_day table(row:eachday,column:open,high,low,close,limit_up,limit_down,volume,turnover)
+
+open table(row:date; cloumn:eachticker)
+high table(row:date; cloumn:eachticker)
+low table(row:date; cloumn:eachticker)
+limit_up table(row:date; cloumn:eachticker)
+limit_down table(row:date; cloumn:eachticker)
+volume table(row:date; cloumn:eachticker)
+total_tunover table(row:date; cloumn:eachticker)
+                              
+                              
